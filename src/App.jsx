@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Mantenimiento from './mantenimiento_/Mantenimiento'
+import BaseMaintenance from './appMaintenances/maintenances/baseMaintenance/BaseMaintenance'
+
 
 function App() {
 
@@ -10,7 +8,8 @@ function App() {
   return (
     <>
     
-    <Mantenimiento/>
+    <BaseMaintenance/>
+
     </>
   )
 }

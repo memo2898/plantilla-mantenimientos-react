@@ -1,0 +1,21 @@
+
+appMaintenances
+├── core                    // Propiedades y funciones comunes para todos los mantenimientos
+│   ├── components          // Componentes reutilizables o compartidos
+│   │   ├── skeletons       // Componente con los skeletos
+│   │   ├── smoothgrid      //Libreria que contiene el componente del datable Responsive
+│   │   ├── smootmodal      //Libreria que contiene el componente modal
+│   │   ├── gatekeeper      //Libreria que maneja formularios y validaciones de los mismos de manera robusta
+│   ├── maintenances.css     // Estilos globales para el mantenimiento
+│   ├── utils               // Funciones y variables globales para el mantenimiento
+── maintenances            // Carpeta principal para diferentes mantenimientos
+│   ├── booksMaintenance     // Carpeta específica para el mantenimiento de libros
+│   │   ├── models           // Funciones específicas relacionadas con el mantenimiento de libros
+│   │   │   ├── structureDataTable.js   // Estructura y formato para el datatable de libros  
+│   │   │   ├── structureValidationsForm.js   // Validaciones específicas para el formulario de libros   
+│   │   ├── components       // Componentes específicos de libros
+│   │   │   ├── FormBuilder.jsx     // Componente principal del formulario, ahora más modular
+│   │   ├── controllers     // Controladores de las operaciones CRUD de libros
+│   │   │   ├── booksController.js  // Todas las funciones CRUD en un solo archivo
+│   │   ├── BooksMaintenance.jsx  // Componente principal para el mantenimiento de libros
+│   

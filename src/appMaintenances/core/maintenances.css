@@ -1,0 +1,89 @@
+.cont-table-mant{
+    display: flex;
+    justify-content: center
+}
+
+
+.controles-navegacion {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+
+.InfoPaginacion-content {
+    width: 100%;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.controles-navegacion{
+    display: flex;
+    gap: 0.4rem;
+}
+.controles-navegacion button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+.controles-navegacion button:hover{
+    transform: scale(1.10);
+
+}
+
+.smoothgrid-btn-activo {
+    color: #007bff;                
+    /* text-decoration: underline;     
+    text-decoration-color: #007bff;     
+    text-decoration-thickness: 2px; 
+    text-underline-offset: 3px;      */
+}
+
+.cont-btn-add-new-mant {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 1rem;
+}
+
+.smooth_modal_close{
+    display: flex;
+    justify-content: end;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-content {
+    padding: 15px;
+}
+
+
+.form-item ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    color: red;
+    font-size: 14px;
+}
+
+.form-item li{
+    margin: 10px;
+}
+
+.cont-btn-form {
+    margin-top: 24px;
+    display: flex;
+    justify-content: end;
+}
+
+.cont-general-menssage {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: red;
+}
