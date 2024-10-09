@@ -9,6 +9,9 @@ import { MaintenanceForm } from './components/MaintenanceForm';
 import SnapModal from '../../core/components/snapmodal/SnapModal';
 import SkeletonMaintenance from '../../core/components/skeletonMaintenances/SkeletonMaintenance';
 
+
+import { GET_ALL_COVERS } from '../../../servicios/CoversService';
+
 function BaseMaintenance() {
     const [initial, setInitial] = useState(false)
     const [headerTableContent, setHeaderContent] = useState(headerTableStructure);
@@ -95,6 +98,29 @@ function BaseMaintenance() {
     }, [deleteData, toggleModal]);
 
     const [snapModalData, setSnapModalData] = useState({})
+
+
+
+
+     //Llenar selects
+     const [covers, setCovers] = useState([])
+     useEffect(()=>{
+         const findAllCovers = async()=>{
+            const response = await GET_ALL_COVERS()
+            const formattingCovers=[]
+            response.forEach((item)=>{
+               formattingCovers.push({ value: item.id, label:item.imageUrl })
+            });
+            setCovers(formattingCovers)
+         
+         }
+         findAllCovers()
+ 
+     },[])
+
+
+
+     
     return (
         <>
         {!initial?
@@ -127,6 +153,7 @@ function BaseMaintenance() {
                                 toggleModal={toggleModal} 
                                 setSnapModalData={setSnapModalData}
                                 setShowMessageModal={setShowMessageModal}
+                                covers={covers}
                           
                             />
                         </>

@@ -3,11 +3,15 @@ import GKForm from "../../../core/components/gatekeeper/GKForm";
 import GKInput from "../../../core/components/gatekeeper/GKInput";
 import GKInfo from "../../../core/components/gatekeeper/GKInfo";
 import GKSubmit from "../../../core/components/gatekeeper/GKSubmit";
+import GKSelect from "../../../core/components/gatekeeper/GKSelect";
 import {  useState } from "react";
 import { CREATE_SERVICE, UPDATE_SERVICE } from "../controllers/baseController";
 import CircularLoader from "../../../core/components/circularProgress/CircularLoader";
 
-export function MaintenanceForm({ data, actionMode, addData, updateSingleData,toggleModal, setSnapModalData, setShowMessageModal}) {
+
+
+export function MaintenanceForm({ data, actionMode, addData, updateSingleData,toggleModal, setSnapModalData, setShowMessageModal, covers}) {
+
 
 
     const [generalMessage, setGeneralMessage] = useState("");
@@ -23,9 +27,6 @@ export function MaintenanceForm({ data, actionMode, addData, updateSingleData,to
             setGeneralMessage("Some wrong data");
             return;
         } 
-
-    
-
 
 
         handlerLoading()
@@ -60,47 +61,67 @@ export function MaintenanceForm({ data, actionMode, addData, updateSingleData,to
 
     };
 
-
+   
     return (
         <>
             <GKForm onSubmit={validationResponse}>
-                {/*-- Item: Name --*/}
-                <div className='form-item'>
-                    <h4>Name:</h4>
-                    <GKInput 
-                        type="text" 
-                        name="name" 
-                        validations={["string", "required"]} 
-                        autocomplete="off" 
-                        value={data.name || ""}
-                    />
-                    <GKInfo 
-                        listen="name"  
-                        validations={[
-                            { name_option: "string", message_true: "", message_false: "Debe ingresar un string válido" },
-                            { name_option: "required", message_true: "", message_false: "Campo requerido" }
-                        ]}
-                    />
-                </div>
+                {/*-- Item start --*/}
+                    <div className='form-item'>
+                        <h4>Title:</h4>
+                        <GKInput 
+                            type="text" 
+                            name="title" 
+                            validations={["string", "required"]} 
+                            autocomplete="off" 
+                            value={data.title || ""}
+                        />
+                        <GKInfo 
+                            listen="title"  
+                            validations={[
+                                { name_option: "string", message_true: "", message_false: "Debe ingresar un string válido" },
+                                { name_option: "required", message_true: "", message_false: "Campo requerido" }
+                            ]}
+                        />
+                    </div>
+                {/*-- Item end --*/}
                 
-                {/*-- Item: Lastname --*/}
-                <div className='form-item'>
-                    <h4>Lastname:</h4>
-                    <GKInput 
-                        type="text" 
-                        name="lastname" 
-                        validations={["string", "required"]} 
-                        autocomplete="off" 
-                        value={data.lastname || ""}
-                    />
-                    <GKInfo 
-                        listen="lastname"  
-                        validations={[
-                            { name_option: "string", message_true: "", message_false: "Debe ingresar un string válido" },
-                            { name_option: "required", message_true: "", message_false: "Campo requerido" }
-                        ]}
-                    />
-                </div>
+                {/*-- Item start --*/}
+                    <div className='form-item'>
+                        <h4>Author:</h4>
+                        <GKInput 
+                            type="text" 
+                            name="author" 
+                            validations={["string", "required"]} 
+                            autocomplete="off" 
+                            value={data.author || ""}
+                        />
+                        <GKInfo 
+                            listen="author"  
+                            validations={[
+                                { name_option: "string", message_true: "", message_false: "Debe ingresar un string válido" },
+                                { name_option: "required", message_true: "", message_false: "Campo requerido" }
+                            ]}
+                        />
+                    </div>
+                {/*-- Item end --*/}
+                {/*-- Item start --*/}
+                    <div className='form-item'>
+                        <h4>cover Id:</h4>
+                        <GKSelect 
+                            name="coverId" 
+                            options={covers} 
+                            selectedValue={data.coverId || ""} 
+                            validations={['notEmpty', 'required']}
+                            />
+                        <GKInfo 
+                            listen="coverId"  
+                            validations={[
+                                { name_option: "string", message_true: "", message_false: "Debe ingresar un string válido" },
+                                { name_option: "required", message_true: "", message_false: "Campo requerido" }
+                            ]}
+                        />
+                    </div>
+                {/*-- Item end --*/}
 
                 <div className="cont-general-menssage">
                     <span>{generalMessage}</span>

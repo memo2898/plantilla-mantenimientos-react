@@ -1,3 +1,11 @@
+
+:root {
+    --warning-color: #E77920;
+    --info-color: #2459C6;
+    --success-color: #057854;
+    --error-color: #C1182C;
+  }
+
 .cont-table-mant{
     display: flex;
     justify-content: center
@@ -95,4 +103,30 @@
     display: flex;
     justify-content: end;
     margin-bottom: 10px;
+}
+
+.ico-btn{
+    width: 20px;
+    height: 20px;
+}
+
+
+.cont-btns-maintenance{
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
+    gap: 10px;
+}
+.btn-update{
+    background-color: var( --warning-color);
+}
+.btn-delete{
+    background-color: var( --error-color);
+}
+.btn-maintenance {
+    border: none;
+    width: 2.8rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    cursor: pointer;
 }

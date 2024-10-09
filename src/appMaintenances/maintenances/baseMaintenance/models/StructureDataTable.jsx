@@ -1,23 +1,27 @@
 /* eslint-disable react-refresh/only-export-components */
-
-export const headerTableStructure = ['Name', 'Lastname', 'Options'];
+import pencil from '../../../core/assets/SVG/pencil.svg'
+import trash from '../../../core/assets/SVG/trash.svg'
+export const headerTableStructure = ['Titulo', 'Autor','ID Cover', 'Options'];
 
 export function BodyTableStructure(receivedData, openModalWithSelectedData) {
     const bodyTableStructure = [];
 
     receivedData.forEach(item => {
         bodyTableStructure.push({
-            name: item.name,
-            lastname: item.lastname,
+            title: item.title,
+            author: item.author,
+            coverId: item.coverId,
             options: (
-                <div>
-                   
-                    <button className="btn btn-primary" onClick={(event) => openModalWithSelectedData(event, item, 'update')}>
-                        Update
+                <div className='cont-btns-maintenance'>
+
+                    <button className="btn-maintenance btn-update" onClick={(event) => openModalWithSelectedData(event, item, 'update')}>
+                        <img src={pencil}  className="ico-btn" />
                     </button>
-                    <button className="btn btn-primary" onClick={(event) => openModalWithSelectedData(event, item, 'delete')}>
-                        Delete
+
+                    <button className="btn-maintenance btn-delete" onClick={(event) => openModalWithSelectedData(event, item, 'delete')}>
+                        <img src={trash}  className="ico-btn" />
                     </button>
+
                 </div>
             )
         });
