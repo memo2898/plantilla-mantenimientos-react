@@ -4,17 +4,48 @@ import GKInput from "../../../core/components/gatekeeper/GKInput";
 import GKInfo from "../../../core/components/gatekeeper/GKInfo";
 import GKSubmit from "../../../core/components/gatekeeper/GKSubmit";
 import { useState } from "react";
+import { CREATE_SERVICE, UPDATE_SERVICE } from "../controllers/baseController";
 
-export function MaintenanceForm({ data }) {
+export function MaintenanceForm({ data, actionMode, addData, updateSingleData,toggleModal}) {
     const [generalMessage, setGeneralMessage] = useState("");
 
-    const validationResponse = (response) => {
-        console.log(response); 
-        if(response.general_validation){
-            setGeneralMessage("");
-        } else {
+    const validationResponse = async (response) => {
+        setGeneralMessage("");
+        if(!response.general_validation){
             setGeneralMessage("Some wrong data");
+            return;
+        } 
+
+
+        console.log(response); 
+        let BODY = response.form_body;
+
+        if(actionMode ==='create'){
+            delete BODY.id;
+            console.log('Llamar el servicio de crear')
+            console.log('Mostrar el loader')
+            const respuesta = await CREATE_SERVICE(BODY);
+            addData(respuesta)
+            console.log('Ocultar el loader')
+            console.log('Mostrar el mensaje de exito en el mensajito emergente')
+            console.log('Cerrar el modal')
         }
+
+        if(actionMode ==='update'){
+            console.log('Llamar el servicio de actualizar')
+            console.log('Mostrar el loader')
+            const respuesta = await UPDATE_SERVICE(data.id , BODY);
+            updateSingleData(data.id, respuesta)
+
+            console.log('Ocultar el loader')
+            console.log('Mostrar el mensaje de exito en el mensajito emergente')
+            toggleModal()
+        }
+
+
+        
+        
+
     };
 
     return (

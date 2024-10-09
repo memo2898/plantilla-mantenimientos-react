@@ -11,10 +11,10 @@ export function BodyTableStructure(receivedData, openModalWithSelectedData) {
             lastname: item.lastname,
             options: (
                 <div>
-                    <button className="btn btn-primary" onClick={(event) => openModalWithSelectedData(event, item)}>
+                    <button className="btn btn-primary" onClick={(event) => openModalWithSelectedData(event, item, 'update')}>
                         Update
                     </button>
-                    <button className="btn btn-primary" onClick={() => { alert(`Delete ${item.id}`) }}>
+                    <button className="btn btn-primary" onClick={(event) => openModalWithSelectedData(event, item, 'delete')}>
                         Delete
                     </button>
                 </div>
