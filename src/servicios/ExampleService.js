@@ -49,7 +49,7 @@ export async function POST_EXAMPLES(body){
         setTimeout(() => {
             const newExample = { id: examples.length + 1, ...body };
             examples.push(newExample);
-            console.log(newExample)
+          
             resolve(newExample);
         }, 2000);
     });

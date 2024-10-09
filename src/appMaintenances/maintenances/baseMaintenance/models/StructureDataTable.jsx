@@ -11,6 +11,7 @@ export function BodyTableStructure(receivedData, openModalWithSelectedData) {
             lastname: item.lastname,
             options: (
                 <div>
+                   
                     <button className="btn btn-primary" onClick={(event) => openModalWithSelectedData(event, item, 'update')}>
                         Update
                     </button>

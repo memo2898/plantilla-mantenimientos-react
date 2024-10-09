@@ -3,11 +3,19 @@ import GKForm from "../../../core/components/gatekeeper/GKForm";
 import GKInput from "../../../core/components/gatekeeper/GKInput";
 import GKInfo from "../../../core/components/gatekeeper/GKInfo";
 import GKSubmit from "../../../core/components/gatekeeper/GKSubmit";
-import { useState } from "react";
+import {  useState } from "react";
 import { CREATE_SERVICE, UPDATE_SERVICE } from "../controllers/baseController";
+import CircularLoader from "../../../core/components/circularProgress/CircularLoader";
 
-export function MaintenanceForm({ data, actionMode, addData, updateSingleData,toggleModal}) {
+export function MaintenanceForm({ data, actionMode, addData, updateSingleData,toggleModal, setSnapModalData, setShowMessageModal}) {
+
+
     const [generalMessage, setGeneralMessage] = useState("");
+    const [isLoading, setIsLoading] = useState(false)
+
+    const handlerLoading = ()=>{
+        setIsLoading(!isLoading)
+    }
 
     const validationResponse = async (response) => {
         setGeneralMessage("");
@@ -16,37 +24,42 @@ export function MaintenanceForm({ data, actionMode, addData, updateSingleData,to
             return;
         } 
 
+    
 
-        console.log(response); 
+
+
+        handlerLoading()
+        //console.log(response); 
         let BODY = response.form_body;
 
         if(actionMode ==='create'){
-            delete BODY.id;
-            console.log('Llamar el servicio de crear')
-            console.log('Mostrar el loader')
-            const respuesta = await CREATE_SERVICE(BODY);
-            addData(respuesta)
-            console.log('Ocultar el loader')
-            console.log('Mostrar el mensaje de exito en el mensajito emergente')
-            console.log('Cerrar el modal')
+                delete BODY.id;
+
+                
+                const respuesta = await CREATE_SERVICE(BODY);
+                addData(respuesta)
+                setSnapModalData({ type:"success" , message:"Record inserted successfully"});
+                setShowMessageModal(true);
+                toggleModal();
+
         }
 
         if(actionMode ==='update'){
-            console.log('Llamar el servicio de actualizar')
-            console.log('Mostrar el loader')
-            const respuesta = await UPDATE_SERVICE(data.id , BODY);
-            updateSingleData(data.id, respuesta)
 
-            console.log('Ocultar el loader')
-            console.log('Mostrar el mensaje de exito en el mensajito emergente')
-            toggleModal()
+                const respuesta = await UPDATE_SERVICE(data.id , BODY);
+                updateSingleData(data.id, respuesta);
+                setSnapModalData({ type:"success" , message:"Record update successfully"})
+                setShowMessageModal(true)
+                toggleModal()
         }
 
+        handlerLoading()
+        
 
-        
-        
+    
 
     };
+
 
     return (
         <>
@@ -92,8 +105,17 @@ export function MaintenanceForm({ data, actionMode, addData, updateSingleData,to
                 <div className="cont-general-menssage">
                     <span>{generalMessage}</span>
                 </div>
+
+                <div className="cont-circularProgress">
+
+                        <CircularLoader size={35} strokeWidth={3}  color="#00bfa5" className={!isLoading?'invisible':''}/>
+                   
+            
+                </div>
+                
+
                 <div className="cont-btn-form">
-                    <GKSubmit type="button">Send</GKSubmit>
+                    <GKSubmit type="button" disabled={isLoading? true:false} >Send</GKSubmit>
                 </div>
             </GKForm>
         </>

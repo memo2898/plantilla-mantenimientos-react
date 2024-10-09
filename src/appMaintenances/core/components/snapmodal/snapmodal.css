@@ -1,0 +1,102 @@
+:root {
+    --warning-color: #E77920;
+    --info-color: #2459C6;
+    --success-color: #057854;
+    --error-color: #C1182C;
+  }
+  
+  .snapmodal-container {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background-color: var(--info-color);
+    display: flex;
+ 
+    color: white;
+    width: clamp(18rem, calc(10px + 22vw), 28rem);
+    min-height: 0.1rem;
+    border-radius: 12px;
+    padding: 1rem;
+    opacity: 0;
+    transform: translateX(100%); /* Inicialmente fuera de la pantalla */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .left-side-spm {
+  
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5%;
+    width: 80%;
+}
+.message-spm{
+    margin: 0;
+    font-size: clamp(14px, calc(4px + 2vw), 15px);
+}
+.meddle-side-spm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 10%;
+}
+  .rigth-side-spm {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 10%;
+}
+.line-div{
+    background-color: aliceblue;
+    height: 80%;
+    width: 1px;
+}
+.close-btn-spm{
+    width: 16px;
+    cursor: pointer;
+}
+.ico-spm{
+    width: 25px;
+    height: 25px;
+  }
+
+  /* Animación de entrada: swipe de derecha a izquierda */
+  .snapmodal-container.show {
+    opacity: 1;
+    transform: translateX(0); /* Se desplaza hacia el centro */
+  }
+  
+  /* Animación de salida: swipe de izquierda a derecha */
+  .snapmodal-container.hide {
+    opacity: 0;
+    transform: translateX(100%); /* Se desplaza hacia la derecha */
+  }
+  
+  /* Colores según el tipo */
+  .snapmodal-container.warning {
+    background-color: var(--warning-color);
+  }
+  
+  .snapmodal-container.info {
+    background-color: var(--info-color);
+  }
+  
+  .snapmodal-container.success {
+    background-color: var(--success-color);
+  }
+  
+  .snapmodal-container.error {
+    background-color: var(--error-color);
+  }
+  
+
+
+  
+
+
+  

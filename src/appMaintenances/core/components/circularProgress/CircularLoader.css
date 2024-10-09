@@ -1,0 +1,31 @@
+.circular-progress {
+    transform: rotate(-90deg); /* Gira el círculo para que empiece desde arriba */
+  }
+  
+  .circular-progress-bar {
+    animation: rotate 1.5s linear infinite; /* Rotación infinita, ajusta la duración según lo que necesites */
+    transition: stroke-dashoffset 0.3s linear;
+    transform-origin: 50% 50%;
+    stroke-linecap: round;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg); /* Gira completamente alrededor del círculo */
+    }
+  }
+  
+
+  .cont-circularProgress {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.invisible{
+  visibility: hidden;
+}

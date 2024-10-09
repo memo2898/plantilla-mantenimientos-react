@@ -91,3 +91,8 @@
     margin-bottom: 7px;
     margin-top: 7px;
 }
+.cont-btn-add-new-maint {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+}
