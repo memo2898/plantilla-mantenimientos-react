@@ -89,7 +89,7 @@ function Smoothgrid({ headerData, bodyData }) {
             {/* Contenedor de los controles superiores start */}
             <div className="cont-ctrls-top-smoothgrid">
                 <div className="cont-search">
-                    <span>Buscar</span>
+                    <span>Buscar: </span>
                     <input type="text" onInput={ejecutarFiltrado} />
                 </div>
             </div>

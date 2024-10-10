@@ -8,9 +8,10 @@ import { Smoothmodal } from '../../core/components/smoothmodal/Smoothmodal';
 import { MaintenanceForm } from './components/MaintenanceForm';
 import SnapModal from '../../core/components/snapmodal/SnapModal';
 import SkeletonMaintenance from '../../core/components/skeletonMaintenances/SkeletonMaintenance';
-
+import plus from '../../core/assets/SVG/plus.svg'
 
 import { GET_ALL_COVERS } from '../../../servicios/CoversService';
+import CircularLoader from '../../core/components/circularProgress/CircularLoader';
 
 function BaseMaintenance() {
     const [initial, setInitial] = useState(false)
@@ -84,15 +85,16 @@ function BaseMaintenance() {
     }, []);
 
     // Función para realizar la acción de eliminar
+    const [isLoading, setIsLoading] = useState(false)
     const doDeleteAction = useCallback(async (id) => {
-        console.log('Abrir loader');
+        setIsLoading(true)
         await DELETE_SERVICE(id);
         deleteData(id);
-        console.log('cerrar loader');
         toggleModal();
 
         setSnapModalData({ type:"success" , message:"Record deleted successfully"})
         setShowMessageModal(true)
+        setIsLoading(false)
 
 
     }, [deleteData, toggleModal]);
@@ -131,8 +133,12 @@ function BaseMaintenance() {
 
             {/* Botón para agregar nuevo registro */}
             <div className="cont-btn-add-new-maint">
-                <button onClick={toggleModal}>Add New</button>
+                <button className="btn-maintenance btn-new" onClick={toggleModal}>
+                    <img src={plus}  className="ico-btn" />
+                </button>
             </div>
+
+
 
             {/* Tabla de mantenimientos */}
             <div className="cont-table-maint">
@@ -158,10 +164,15 @@ function BaseMaintenance() {
                             />
                         </>
                     ) : (
-                        <>
+                        <div>
                             <span>Are you sure you want to delete this record?</span>
-                            <button onClick={() => { doDeleteAction(sharedSelectedData.id) }}>Delete</button>
-                        </>
+                            <div className="cont-circularProgress">
+                                <CircularLoader size={35} strokeWidth={3}  color="#00bfa5" className={!isLoading?'invisible':''}/>
+                            </div>
+                            <div className="cont-btn-form">
+                                <button  disabled={isLoading? true:false} onClick={() => { doDeleteAction(sharedSelectedData.id) }}>Delete</button>
+                            </div>
+                        </div>
                     )}
                 </div>
             </Smoothmodal>

@@ -7,8 +7,9 @@ function App() {
 
   return (
     <>
-    
-    <BaseMaintenance/>
+    <div className='cont-mant'>
+      <BaseMaintenance/>
+    </div>
 
     </>
   )

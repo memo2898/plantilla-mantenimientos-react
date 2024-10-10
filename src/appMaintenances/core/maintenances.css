@@ -117,6 +117,10 @@
     align-items: center;
     gap: 10px;
 }
+
+.btn-new{
+    background-color:#768a9f;
+}
 .btn-update{
     background-color: var( --warning-color);
 }

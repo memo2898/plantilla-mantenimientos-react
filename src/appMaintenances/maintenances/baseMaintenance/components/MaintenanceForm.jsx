@@ -130,7 +130,6 @@ export function MaintenanceForm({ data, actionMode, addData, updateSingleData,to
                 <div className="cont-circularProgress">
 
                         <CircularLoader size={35} strokeWidth={3}  color="#00bfa5" className={!isLoading?'invisible':''}/>
-                   
             
                 </div>
                 
