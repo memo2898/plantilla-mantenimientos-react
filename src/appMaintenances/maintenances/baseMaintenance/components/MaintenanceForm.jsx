@@ -65,6 +65,7 @@ export function MaintenanceForm({ data, actionMode, addData, updateSingleData,to
     return (
         <>
             <GKForm onSubmit={validationResponse}>
+                <div className="cont-form-element">
                 {/*-- Item start --*/}
                     <div className='form-item'>
                         <h4>Title:</h4>
@@ -122,7 +123,9 @@ export function MaintenanceForm({ data, actionMode, addData, updateSingleData,to
                         />
                     </div>
                 {/*-- Item end --*/}
+                </div>
 
+                
                 <div className="cont-general-menssage">
                     <span>{generalMessage}</span>
                 </div>
@@ -131,11 +134,12 @@ export function MaintenanceForm({ data, actionMode, addData, updateSingleData,to
 
                         <CircularLoader size={35} strokeWidth={3}  color="#00bfa5" className={!isLoading?'invisible':''}/>
             
-                </div>
+               
                 
-
+                </div>
                 <div className="cont-btn-form">
                     <GKSubmit type="button" disabled={isLoading? true:false} >Send</GKSubmit>
+                
                 </div>
             </GKForm>
         </>

@@ -164,8 +164,8 @@ function BaseMaintenance() {
                             />
                         </>
                     ) : (
-                        <div>
-                            <span>Are you sure you want to delete this record?</span>
+                        <div className='cont-delete-form'>
+                            <span className='cont-message-confirm'>Are you sure you want to delete this record?</span>
                             <div className="cont-circularProgress">
                                 <CircularLoader size={35} strokeWidth={3}  color="#00bfa5" className={!isLoading?'invisible':''}/>
                             </div>
